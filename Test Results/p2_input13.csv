@@ -1,0 +1,292 @@
+Stack,Action
+" . LexToken(INT,'int',1,0)", Shift and goto state 13
+" INT . LexToken(ID,'fact',1,4)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Type . LexToken(ID,'fact',1,4)", Shift and goto state 19
+" Type ID . LexToken(LEFTPAREN,'(',1,9)", Shift and goto state 26
+" Type ID LEFTPAREN . LexToken(INT,'int',1,10)", Shift and goto state 13
+" Type ID LEFTPAREN INT . LexToken(ID,'x',1,14)", Reduce rule [Type -> INT] with ['int'] and goto state 35
+" Type ID LEFTPAREN Type . LexToken(ID,'x',1,14)", Shift and goto state 58
+" Type ID LEFTPAREN Type ID . LexToken(RIGHTPAREN,')',1,15)"," Reduce rule [Variable -> Type ID] with [None,'x'] and goto state 39"
+" Type ID LEFTPAREN Variable . LexToken(RIGHTPAREN,')',1,15)", Reduce rule [Formals -> Variable] with [None] and goto state 37
+" Type ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,15)", Shift and goto state 60
+" Type ID LEFTPAREN Formals RIGHTPAREN . LexToken(LEFTBRACE,'{',1,17)", Shift and goto state 62
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE . LexToken(IF,'if',1,59)", Shift and goto state 106
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF . LexToken(LEFTPAREN,'(',1,62)", Shift and goto state 163
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN . LexToken(ID,'x',1,63)", Shift and goto state 131
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN ID . LexToken(GREATER,'>',1,64)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN LValue . LexToken(GREATER,'>',1,64)", Reduce rule [Expression -> LValue] with [None] and goto state 198
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression . LexToken(GREATER,'>',1,64)", Shift and goto state 146
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression GREATER . LexToken(INTCONSTANT,'1',1,65)", Reduce rule [CompareOperator -> GREATER] with ['>'] and goto state 137
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator . LexToken(INTCONSTANT,'1',1,65)", Shift and goto state 105
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator INTCONSTANT . LexToken(RIGHTPAREN,')',1,66)", Reduce rule [Constant -> INTCONSTANT] with ['1'] and goto state 96
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator Constant . LexToken(RIGHTPAREN,')',1,66)", Reduce rule [Expression -> Constant] with [None] and goto state 183
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator Expression . LexToken(RIGHTPAREN,')',1,66)"," Reduce rule [Expression -> Expression CompareOperator Expression] with [None,None,None] and goto state 198"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression . LexToken(RIGHTPAREN,')',1,66)", Shift and goto state 219
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN . LexToken(RETURN,'return',1,68)", Shift and goto state 110
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN . LexToken(ID,'x',1,75)", Shift and goto state 131
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN ID . LexToken(MULT,'*',1,77)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN LValue . LexToken(MULT,'*',1,77)", Reduce rule [Expression -> LValue] with [None] and goto state 167
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression . LexToken(MULT,'*',1,77)", Shift and goto state 141
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression MULT . LexToken(ID,'fact',1,79)", Reduce rule [ArithmaticOperator -> MULT] with ['*'] and goto state 136
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator . LexToken(ID,'fact',1,79)", Shift and goto state 131
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID . LexToken(LEFTPAREN,'(',1,83)", Shift and goto state 154
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN . LexToken(ID,'x',1,84)", Shift and goto state 131
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN ID . LexToken(MINUS,'-',1,85)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN LValue . LexToken(MINUS,'-',1,85)", Reduce rule [Expression -> LValue] with [None] and goto state 190
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression . LexToken(MINUS,'-',1,85)", Shift and goto state 140
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression MINUS . LexToken(INTCONSTANT,'1',1,86)", Reduce rule [ArithmaticOperator -> MINUS] with ['-'] and goto state 136
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression ArithmaticOperator . LexToken(INTCONSTANT,'1',1,86)", Shift and goto state 105
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression ArithmaticOperator INTCONSTANT . LexToken(RIGHTPAREN,')',1,87)", Reduce rule [Constant -> INTCONSTANT] with ['1'] and goto state 96
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression ArithmaticOperator Constant . LexToken(RIGHTPAREN,')',1,87)", Reduce rule [Expression -> Constant] with [None] and goto state 182
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression ArithmaticOperator Expression . LexToken(RIGHTPAREN,')',1,87)"," Reduce rule [Expression -> Expression ArithmaticOperator Expression] with [None,None,None] and goto state 190"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Expression . LexToken(RIGHTPAREN,')',1,87)", Reduce rule [ExpressionList -> Expression] with [None] and goto state 189
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN ExpressionList . LexToken(RIGHTPAREN,')',1,87)", Reduce rule [Actuals -> ExpressionList] with [None] and goto state 187
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Actuals . LexToken(RIGHTPAREN,')',1,87)", Shift and goto state 214
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator ID LEFTPAREN Actuals RIGHTPAREN . LexToken(SEMICOLON,';',1,88)"," Reduce rule [Call -> ID LEFTPAREN Actuals RIGHTPAREN] with ['fact','(',None,')'] and goto state 98"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator Call . LexToken(SEMICOLON,';',1,88)", Reduce rule [Expression -> Call] with [None] and goto state 182
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression ArithmaticOperator Expression . LexToken(SEMICOLON,';',1,88)"," Reduce rule [Expression -> Expression ArithmaticOperator Expression] with [None,None,None] and goto state 167"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression . LexToken(SEMICOLON,';',1,88)", Shift and goto state 202
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression SEMICOLON . LexToken(ELSE,'else',1,94)"," Reduce rule [ReturnStatement -> RETURN Expression SEMICOLON] with ['return',None,';'] and goto state 91"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN ReturnStatement . LexToken(ELSE,'else',1,94)", Reduce rule [Statement -> ReturnStatement] with [None] and goto state 233
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement . LexToken(ELSE,'else',1,94)", Shift and goto state 241
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE . LexToken(RETURN,'return',1,99)", Shift and goto state 110
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN . LexToken(INTCONSTANT,'1',1,106)", Shift and goto state 105
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN INTCONSTANT . LexToken(SEMICOLON,';',1,107)", Reduce rule [Constant -> INTCONSTANT] with ['1'] and goto state 96
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN Constant . LexToken(SEMICOLON,';',1,107)", Reduce rule [Expression -> Constant] with [None] and goto state 167
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN Expression . LexToken(SEMICOLON,';',1,107)", Shift and goto state 202
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN Expression SEMICOLON . LexToken(RIGHTBRACE,'}',1,109)"," Reduce rule [ReturnStatement -> RETURN Expression SEMICOLON] with ['return',None,';'] and goto state 91"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE ReturnStatement . LexToken(RIGHTBRACE,'}',1,109)", Reduce rule [Statement -> ReturnStatement] with [None] and goto state 245
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE Statement . LexToken(RIGHTBRACE,'}',1,109)"," Reduce rule [IfStatement -> IF LEFTPAREN Expression RIGHTPAREN Statement ELSE Statement] with ['if','(',None,')',None,'else',None] and goto state 87"
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IfStatement . LexToken(RIGHTBRACE,'}',1,109)", Reduce rule [Statement -> IfStatement] with [None] and goto state 84
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statement . LexToken(RIGHTBRACE,'}',1,109)", Reduce rule [Statements -> Statement] with [None] and goto state 81
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statements . LexToken(RIGHTBRACE,'}',1,109)", Shift and goto state 132
+" Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statements RIGHTBRACE . LexToken(VOID,'void',1,111)"," Reduce rule [StatementBlock -> LEFTBRACE Statements RIGHTBRACE] with ['{',None,'}'] and goto state 79"
+" Type ID LEFTPAREN Formals RIGHTPAREN StatementBlock . LexToken(VOID,'void',1,111)"," Reduce rule [FunctionDeclaration -> Type ID LEFTPAREN Formals RIGHTPAREN StatementBlock] with [None,'fact','(',None,')',None] and goto state 4"
+" FunctionDeclaration . LexToken(VOID,'void',1,111)", Reduce rule [Declaration -> FunctionDeclaration] with [None] and goto state 2
+" Declaration . LexToken(VOID,'void',1,111)", Shift and goto state 10
+" Declaration VOID . LexToken(ID,'main',1,116)", Shift and goto state 23
+" Declaration VOID ID . LexToken(LEFTPAREN,'(',1,121)", Shift and goto state 30
+" Declaration VOID ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,122)", Shift and goto state 43
+" Declaration VOID ID LEFTPAREN RIGHTPAREN . LexToken(LEFTBRACE,'{',1,124)", Shift and goto state 62
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE . LexToken(INT,'int',1,214)", Shift and goto state 13
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE INT . LexToken(ID,'x',1,218)", Reduce rule [Type -> INT] with ['int'] and goto state 35
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE Type . LexToken(ID,'x',1,218)", Shift and goto state 58
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE Type ID . LexToken(SEMICOLON,';',1,219)"," Reduce rule [Variable -> Type ID] with [None,'x'] and goto state 7"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE Variable . LexToken(SEMICOLON,';',1,219)", Shift and goto state 18
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE Variable SEMICOLON . LexToken(INT,'int',1,225)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 83"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration . LexToken(INT,'int',1,225)", Shift and goto state 13
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration INT . LexToken(ID,'total',1,229)", Reduce rule [Type -> INT] with ['int'] and goto state 35
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration Type . LexToken(ID,'total',1,229)", Shift and goto state 58
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration Type ID . LexToken(SEMICOLON,';',1,234)"," Reduce rule [Variable -> Type ID] with [None,'total'] and goto state 7"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration Variable . LexToken(SEMICOLON,';',1,234)", Shift and goto state 18
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration Variable SEMICOLON . LexToken(PRINTLN,'println',1,240)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 83"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration VariableDeclaration . LexToken(PRINTLN,'println',1,240)", Reduce rule [VaribleDeclarations -> VariableDeclaration] with [None] and goto state 133
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VariableDeclaration VaribleDeclarations . LexToken(PRINTLN,'println',1,240)"," Reduce rule [VaribleDeclarations -> VariableDeclaration VaribleDeclarations] with [None,None] and goto state 80"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations . LexToken(PRINTLN,'println',1,240)", Shift and goto state 111
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN . LexToken(LEFTPAREN,'(',1,248)", Shift and goto state 169
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN . LexToken(STRINGCONSTANT,'""factorial of 10 is ""',1,249)", Shift and goto state 113
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN STRINGCONSTANT . LexToken(COMMA,',',1,270)", Reduce rule [Constant -> STRINGCONSTANT] with [<str @ 0x16bf59a7b70>] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Constant . LexToken(COMMA,',',1,270)", Reduce rule [Expression -> Constant] with [None] and goto state 190
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression . LexToken(COMMA,',',1,270)", Shift and goto state 215
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA . LexToken(ID,'fact',1,272)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID . LexToken(LEFTPAREN,'(',1,277)", Shift and goto state 154
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN . LexToken(INTCONSTANT,'10',1,278)", Shift and goto state 105
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN INTCONSTANT . LexToken(RIGHTPAREN,')',1,280)", Reduce rule [Constant -> INTCONSTANT] with ['10'] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN Constant . LexToken(RIGHTPAREN,')',1,280)", Reduce rule [Expression -> Constant] with [None] and goto state 190
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN Expression . LexToken(RIGHTPAREN,')',1,280)", Reduce rule [ExpressionList -> Expression] with [None] and goto state 189
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN ExpressionList . LexToken(RIGHTPAREN,')',1,280)", Reduce rule [Actuals -> ExpressionList] with [None] and goto state 187
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN Actuals . LexToken(RIGHTPAREN,')',1,280)", Shift and goto state 214
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ID LEFTPAREN Actuals RIGHTPAREN . LexToken(COMMA,',',1,281)"," Reduce rule [Call -> ID LEFTPAREN Actuals RIGHTPAREN] with ['fact','(',None,')'] and goto state 98"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Call . LexToken(COMMA,',',1,281)", Reduce rule [Expression -> Call] with [None] and goto state 190
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Expression . LexToken(COMMA,',',1,281)", Shift and goto state 215
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Expression COMMA . LexToken(STRINGCONSTANT,'"" from the recursive function""',1,283)", Shift and goto state 113
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Expression COMMA STRINGCONSTANT . LexToken(RIGHTPAREN,')',1,313)", Reduce rule [Constant -> STRINGCONSTANT] with [<str @ 0x16bf59a7b70>] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Expression COMMA Constant . LexToken(RIGHTPAREN,')',1,313)", Reduce rule [Expression -> Constant] with [None] and goto state 190
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Expression COMMA Expression . LexToken(RIGHTPAREN,')',1,313)", Reduce rule [ExpressionList -> Expression] with [None] and goto state 230
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA Expression COMMA ExpressionList . LexToken(RIGHTPAREN,')',1,313)"," Reduce rule [ExpressionList -> Expression COMMA ExpressionList] with [None,',',None] and goto state 230"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN Expression COMMA ExpressionList . LexToken(RIGHTPAREN,')',1,313)"," Reduce rule [ExpressionList -> Expression COMMA ExpressionList] with [None,',',None] and goto state 203"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN ExpressionList . LexToken(RIGHTPAREN,')',1,313)", Shift and goto state 223
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN ExpressionList RIGHTPAREN . LexToken(SEMICOLON,';',1,314)", Shift and goto state 237
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PRINTLN LEFTPAREN ExpressionList RIGHTPAREN SEMICOLON . LexToken(ID,'total',1,320)"," Reduce rule [PrintStatement -> PRINTLN LEFTPAREN ExpressionList RIGHTPAREN SEMICOLON] with ['println','(',None,')',';'] and goto state 92"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations PrintStatement . LexToken(ID,'total',1,320)", Reduce rule [Statement -> PrintStatement] with [None] and goto state 84
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement . LexToken(ID,'total',1,320)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement ID . LexToken(ASSIGN,'=',1,326)", Reduce rule [LValue -> ID] with ['total'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement LValue . LexToken(ASSIGN,'=',1,326)", Shift and goto state 155
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement LValue ASSIGN . LexToken(INTCONSTANT,'1',1,328)", Shift and goto state 105
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement LValue ASSIGN INTCONSTANT . LexToken(SEMICOLON,';',1,329)", Reduce rule [Constant -> INTCONSTANT] with ['1'] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement LValue ASSIGN Constant . LexToken(SEMICOLON,';',1,329)", Reduce rule [Expression -> Constant] with [None] and goto state 191
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,329)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Expression . LexToken(SEMICOLON,';',1,329)", Shift and goto state 135
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Expression SEMICOLON . LexToken(ID,'x',1,331)"," Reduce rule [Statement -> Expression SEMICOLON] with [None,';'] and goto state 84"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement . LexToken(ID,'x',1,331)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement ID . LexToken(ASSIGN,'=',1,333)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement LValue . LexToken(ASSIGN,'=',1,333)", Shift and goto state 155
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement LValue ASSIGN . LexToken(INTCONSTANT,'1',1,335)", Shift and goto state 105
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement LValue ASSIGN INTCONSTANT . LexToken(SEMICOLON,';',1,336)", Reduce rule [Constant -> INTCONSTANT] with ['1'] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement LValue ASSIGN Constant . LexToken(SEMICOLON,';',1,336)", Reduce rule [Expression -> Constant] with [None] and goto state 191
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,336)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Expression . LexToken(SEMICOLON,';',1,336)", Shift and goto state 135
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Expression SEMICOLON . LexToken(FOR,'for',1,342)"," Reduce rule [Statement -> Expression SEMICOLON] with [None,';'] and goto state 84"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement . LexToken(FOR,'for',1,342)", Shift and goto state 108
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR . LexToken(LEFTPAREN,'(',1,346)", Shift and goto state 165
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN . LexToken(SEMICOLON,';',1,348)", Shift and goto state 201
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON . LexToken(ID,'x',1,350)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON ID . LexToken(LESSEQUAL,'<=',1,351)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON LValue . LexToken(LESSEQUAL,'<=',1,351)", Reduce rule [Expression -> LValue] with [None] and goto state 222
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression . LexToken(LESSEQUAL,'<=',1,351)", Shift and goto state 145
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression LESSEQUAL . LexToken(INTCONSTANT,'10',1,353)", Reduce rule [CompareOperator -> LESSEQUAL] with ['<='] and goto state 137
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression CompareOperator . LexToken(INTCONSTANT,'10',1,353)", Shift and goto state 105
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression CompareOperator INTCONSTANT . LexToken(SEMICOLON,';',1,355)", Reduce rule [Constant -> INTCONSTANT] with ['10'] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression CompareOperator Constant . LexToken(SEMICOLON,';',1,355)", Reduce rule [Expression -> Constant] with [None] and goto state 183
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression CompareOperator Expression . LexToken(SEMICOLON,';',1,355)"," Reduce rule [Expression -> Expression CompareOperator Expression] with [None,None,None] and goto state 222"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression . LexToken(SEMICOLON,';',1,355)", Shift and goto state 236
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON . LexToken(RIGHTPAREN,')',1,357)", Shift and goto state 244
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN . LexToken(LEFTBRACE,'{',1,359)", Shift and goto state 62
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE . LexToken(ID,'total',1,361)", Shift and goto state 94
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE ID . LexToken(ASSIGN,'=',1,367)", Reduce rule [LValue -> ID] with ['total'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue . LexToken(ASSIGN,'=',1,367)", Shift and goto state 155
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN . LexToken(ID,'total',1,369)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN ID . LexToken(MULT,'*',1,375)", Reduce rule [LValue -> ID] with ['total'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN LValue . LexToken(MULT,'*',1,375)", Reduce rule [Expression -> LValue] with [None] and goto state 191
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression . LexToken(MULT,'*',1,375)", Shift and goto state 141
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression MULT . LexToken(ID,'x',1,377)", Reduce rule [ArithmaticOperator -> MULT] with ['*'] and goto state 136
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression ArithmaticOperator . LexToken(ID,'x',1,377)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression ArithmaticOperator ID . LexToken(SEMICOLON,';',1,378)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression ArithmaticOperator LValue . LexToken(SEMICOLON,';',1,378)", Reduce rule [Expression -> LValue] with [None] and goto state 182
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression ArithmaticOperator Expression . LexToken(SEMICOLON,';',1,378)"," Reduce rule [Expression -> Expression ArithmaticOperator Expression] with [None,None,None] and goto state 191"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,378)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Expression . LexToken(SEMICOLON,';',1,378)", Shift and goto state 135
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Expression SEMICOLON . LexToken(ID,'x',1,380)"," Reduce rule [Statement -> Expression SEMICOLON] with [None,';'] and goto state 84"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement . LexToken(ID,'x',1,380)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement ID . LexToken(ASSIGN,'=',1,382)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue . LexToken(ASSIGN,'=',1,382)", Shift and goto state 155
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN . LexToken(ID,'x',1,384)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN ID . LexToken(PLUS,'+',1,386)", Reduce rule [LValue -> ID] with ['x'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN LValue . LexToken(PLUS,'+',1,386)", Reduce rule [Expression -> LValue] with [None] and goto state 191
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression . LexToken(PLUS,'+',1,386)", Shift and goto state 139
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression PLUS . LexToken(INTCONSTANT,'1',1,388)", Reduce rule [ArithmaticOperator -> PLUS] with ['+'] and goto state 136
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression ArithmaticOperator . LexToken(INTCONSTANT,'1',1,388)", Shift and goto state 105
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression ArithmaticOperator INTCONSTANT . LexToken(SEMICOLON,';',1,389)", Reduce rule [Constant -> INTCONSTANT] with ['1'] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression ArithmaticOperator Constant . LexToken(SEMICOLON,';',1,389)", Reduce rule [Expression -> Constant] with [None] and goto state 182
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression ArithmaticOperator Expression . LexToken(SEMICOLON,';',1,389)"," Reduce rule [Expression -> Expression ArithmaticOperator Expression] with [None,None,None] and goto state 191"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,389)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement Expression . LexToken(SEMICOLON,';',1,389)", Shift and goto state 135
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement Expression SEMICOLON . LexToken(RIGHTBRACE,'}',1,391)"," Reduce rule [Statement -> Expression SEMICOLON] with [None,';'] and goto state 84"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement Statement . LexToken(RIGHTBRACE,'}',1,391)", Reduce rule [Statements -> Statement] with [None] and goto state 134
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statement Statements . LexToken(RIGHTBRACE,'}',1,391)"," Reduce rule [Statements -> Statement Statements] with [None,None] and goto state 81"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statements . LexToken(RIGHTBRACE,'}',1,391)", Shift and goto state 132
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN LEFTBRACE Statements RIGHTBRACE . LexToken(PRINTLN,'println',1,397)"," Reduce rule [StatementBlock -> LEFTBRACE Statements RIGHTBRACE] with ['{',None,'}'] and goto state 93"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN StatementBlock . LexToken(PRINTLN,'println',1,397)", Reduce rule [Statement -> StatementBlock] with [None] and goto state 249
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN Statement . LexToken(PRINTLN,'println',1,397)"," Reduce rule [ForStatement -> FOR LEFTPAREN SEMICOLON Expression SEMICOLON RIGHTPAREN Statement] with ['for','(',';',None,';',')',None] and goto state 89"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement ForStatement . LexToken(PRINTLN,'println',1,397)", Reduce rule [Statement -> ForStatement] with [None] and goto state 84
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement . LexToken(PRINTLN,'println',1,397)", Shift and goto state 111
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN . LexToken(LEFTPAREN,'(',1,405)", Shift and goto state 169
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN . LexToken(STRINGCONSTANT,'""iterative result of 10! is ""',1,406)", Shift and goto state 113
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN STRINGCONSTANT . LexToken(COMMA,',',1,435)", Reduce rule [Constant -> STRINGCONSTANT] with [<str @ 0x16bf59a7b70>] and goto state 96
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Constant . LexToken(COMMA,',',1,435)", Reduce rule [Expression -> Constant] with [None] and goto state 190
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Expression . LexToken(COMMA,',',1,435)", Shift and goto state 215
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Expression COMMA . LexToken(ID,'total',1,437)", Shift and goto state 131
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Expression COMMA ID . LexToken(RIGHTPAREN,')',1,442)", Reduce rule [LValue -> ID] with ['total'] and goto state 95
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Expression COMMA LValue . LexToken(RIGHTPAREN,')',1,442)", Reduce rule [Expression -> LValue] with [None] and goto state 190
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Expression COMMA Expression . LexToken(RIGHTPAREN,')',1,442)", Reduce rule [ExpressionList -> Expression] with [None] and goto state 230
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN Expression COMMA ExpressionList . LexToken(RIGHTPAREN,')',1,442)"," Reduce rule [ExpressionList -> Expression COMMA ExpressionList] with [None,',',None] and goto state 203"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN ExpressionList . LexToken(RIGHTPAREN,')',1,442)", Shift and goto state 223
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN ExpressionList RIGHTPAREN . LexToken(SEMICOLON,';',1,443)", Shift and goto state 237
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PRINTLN LEFTPAREN ExpressionList RIGHTPAREN SEMICOLON . LexToken(RIGHTBRACE,'}',1,445)"," Reduce rule [PrintStatement -> PRINTLN LEFTPAREN ExpressionList RIGHTPAREN SEMICOLON] with ['println','(',None,')',';'] and goto state 92"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement PrintStatement . LexToken(RIGHTBRACE,'}',1,445)", Reduce rule [Statement -> PrintStatement] with [None] and goto state 84
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement Statement . LexToken(RIGHTBRACE,'}',1,445)", Reduce rule [Statements -> Statement] with [None] and goto state 134
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statement Statements . LexToken(RIGHTBRACE,'}',1,445)"," Reduce rule [Statements -> Statement Statements] with [None,None] and goto state 134"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statement Statements . LexToken(RIGHTBRACE,'}',1,445)"," Reduce rule [Statements -> Statement Statements] with [None,None] and goto state 134"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statement Statements . LexToken(RIGHTBRACE,'}',1,445)"," Reduce rule [Statements -> Statement Statements] with [None,None] and goto state 134"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statement Statements . LexToken(RIGHTBRACE,'}',1,445)"," Reduce rule [Statements -> Statement Statements] with [None,None] and goto state 129"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statements . LexToken(RIGHTBRACE,'}',1,445)", Shift and goto state 180
+" Declaration VOID ID LEFTPAREN RIGHTPAREN LEFTBRACE VaribleDeclarations Statements RIGHTBRACE . LexToken(CLASS,'class',1,447)"," Reduce rule [StatementBlock -> LEFTBRACE VaribleDeclarations Statements RIGHTBRACE] with ['{',None,None,'}'] and goto state 67"
+" Declaration VOID ID LEFTPAREN RIGHTPAREN StatementBlock . LexToken(CLASS,'class',1,447)"," Reduce rule [FunctionDeclaration -> VOID ID LEFTPAREN RIGHTPAREN StatementBlock] with ['void','main','(',')',None] and goto state 4"
+" Declaration FunctionDeclaration . LexToken(CLASS,'class',1,447)", Reduce rule [Declaration -> FunctionDeclaration] with [None] and goto state 2
+" Declaration Declaration . LexToken(CLASS,'class',1,447)", Shift and goto state 11
+" Declaration Declaration CLASS . LexToken(ID,'CS4110',1,453)", Shift and goto state 24
+" Declaration Declaration CLASS ID . LexToken(LEFTBRACE,'{',1,460)", Shift and goto state 32
+" Declaration Declaration CLASS ID LEFTBRACE . LexToken(INT,'int',1,466)", Shift and goto state 13
+" Declaration Declaration CLASS ID LEFTBRACE INT . LexToken(ID,'Funny',1,470)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Declaration Declaration CLASS ID LEFTBRACE Type . LexToken(ID,'Funny',1,470)", Shift and goto state 19
+" Declaration Declaration CLASS ID LEFTBRACE Type ID . LexToken(SEMICOLON,';',1,475)"," Reduce rule [Variable -> Type ID] with [None,'Funny'] and goto state 7"
+" Declaration Declaration CLASS ID LEFTBRACE Variable . LexToken(SEMICOLON,';',1,475)", Shift and goto state 18
+" Declaration Declaration CLASS ID LEFTBRACE Variable SEMICOLON . LexToken(DOUBLE,'double',1,481)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" Declaration Declaration CLASS ID LEFTBRACE VariableDeclaration . LexToken(DOUBLE,'double',1,481)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" Declaration Declaration CLASS ID LEFTBRACE Field . LexToken(DOUBLE,'double',1,481)", Shift and goto state 14
+" Declaration Declaration CLASS ID LEFTBRACE Field DOUBLE . LexToken(ID,'funny',1,488)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 8
+" Declaration Declaration CLASS ID LEFTBRACE Field Type . LexToken(ID,'funny',1,488)", Shift and goto state 19
+" Declaration Declaration CLASS ID LEFTBRACE Field Type ID . LexToken(SEMICOLON,';',1,493)"," Reduce rule [Variable -> Type ID] with [None,'funny'] and goto state 7"
+" Declaration Declaration CLASS ID LEFTBRACE Field Variable . LexToken(SEMICOLON,';',1,493)", Shift and goto state 18
+" Declaration Declaration CLASS ID LEFTBRACE Field Variable SEMICOLON . LexToken(BOOLEAN,'boolean',1,499)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" Declaration Declaration CLASS ID LEFTBRACE Field VariableDeclaration . LexToken(BOOLEAN,'boolean',1,499)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" Declaration Declaration CLASS ID LEFTBRACE Field Field . LexToken(BOOLEAN,'boolean',1,499)", Shift and goto state 15
+" Declaration Declaration CLASS ID LEFTBRACE Field Field BOOLEAN . LexToken(ID,'flag',1,507)", Reduce rule [Type -> BOOLEAN] with ['boolean'] and goto state 8
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Type . LexToken(ID,'flag',1,507)", Shift and goto state 19
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Type ID . LexToken(SEMICOLON,';',1,511)"," Reduce rule [Variable -> Type ID] with [None,'flag'] and goto state 7"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Variable . LexToken(SEMICOLON,';',1,511)", Shift and goto state 18
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Variable SEMICOLON . LexToken(STRING,'string',1,517)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field VariableDeclaration . LexToken(STRING,'string',1,517)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field . LexToken(STRING,'string',1,517)", Shift and goto state 16
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field STRING . LexToken(ID,'s',1,524)", Reduce rule [Type -> STRING] with ['string'] and goto state 8
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Type . LexToken(ID,'s',1,524)", Shift and goto state 19
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Type ID . LexToken(SEMICOLON,';',1,525)"," Reduce rule [Variable -> Type ID] with [None,'s'] and goto state 7"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Variable . LexToken(SEMICOLON,';',1,525)", Shift and goto state 18
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Variable SEMICOLON . LexToken(INT,'int',1,531)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field VariableDeclaration . LexToken(INT,'int',1,531)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field . LexToken(INT,'int',1,531)", Shift and goto state 13
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field INT . LexToken(LEFTBRACKET,'[',1,535)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Type . LexToken(LEFTBRACKET,'[',1,535)", Shift and goto state 20
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Type LEFTBRACKET . LexToken(RIGHTBRACKET,']',1,536)", Shift and goto state 27
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Type LEFTBRACKET RIGHTBRACKET . LexToken(ID,'a',1,538)"," Reduce rule [Type -> Type LEFTBRACKET RIGHTBRACKET] with [None,'[',']'] and goto state 8"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Type . LexToken(ID,'a',1,538)", Shift and goto state 19
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Type ID . LexToken(SEMICOLON,';',1,539)"," Reduce rule [Variable -> Type ID] with [None,'a'] and goto state 7"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Variable . LexToken(SEMICOLON,';',1,539)", Shift and goto state 18
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Variable SEMICOLON . LexToken(ID,'flag',1,545)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field VariableDeclaration . LexToken(ID,'flag',1,545)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Field . LexToken(ID,'flag',1,545)", Shift and goto state 9
+ Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field Field ID . error,
+ Declaration Declaration CLASS ID LEFTBRACE Field Field Field Field . error,
+ Declaration Declaration CLASS ID LEFTBRACE Field Field . error,
+ Declaration Declaration CLASS ID LEFTBRACE . error,
+ Declaration Declaration CLASS . error,
+ Declaration . error,
+" . LexToken(BOOLEANCONSTANT,'true',1,552)",
+" . LexToken(ID,'Funny',1,562)",
+" ID . LexToken(ASSIGN,'=',1,568)", Shift and goto state 9
+ . error,
+" . LexToken(SEMICOLON,';',1,576)",
+" . LexToken(ID,'funny',1,578)", Shift and goto state 9
+ ID . error,
+" . LexToken(INTCONSTANT,'123456',1,586)",
+" . LexToken(ID,'E',1,592)", Shift and goto state 9
+ ID . error,
+" . LexToken(INTCONSTANT,'7',1,594)",
+" . LexToken(ID,'s',1,601)",
+" ID . LexToken(ASSIGN,'=',1,603)", Shift and goto state 9
+ . error,
+" . LexToken(SEMICOLON,';',1,618)",
+" . LexToken(LEFTPAREN,'(',1,630)",
+" . LexToken(ID,'x',1,631)", Shift and goto state 9
+ ID . error,
+" . LexToken(LEFTPAREN,'(',1,635)",
+" . LexToken(ID,'Funny',1,636)", Shift and goto state 9
+ ID . error,
+" . LexToken(INTCONSTANT,'10',1,642)",
+" . LexToken(LESS,'<',1,646)",
+" . LexToken(RIGHTPAREN,')',1,648)",
+" . LexToken(LEFTPAREN,'(',1,658)",
+" . LexToken(ID,'s',1,659)", Shift and goto state 9
+ ID . error,
+" . LexToken(STRINGCONSTANT,'"" have fun !""',1,662)",
+" . LexToken(SEMICOLON,';',1,676)",
+" . LexToken(ID,'a',1,682)", Shift and goto state 9
+ ID . error,
+" . LexToken(NEWARRAY,'newarray',1,686)",
+" . LexToken(INTCONSTANT,'20',1,696)",
+" . LexToken(INT,'int',1,700)",
+" INT . LexToken(RIGHTPAREN,')',1,703)", Shift and goto state 13
+" Type . LexToken(RIGHTPAREN,')',1,703)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+ . error,
+" . LexToken(RIGHTBRACE,'}',1,706)",
+ . $end,

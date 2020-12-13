@@ -1,0 +1,65 @@
+Stack,Action
+" . LexToken(CLASS,'class',1,0)", Shift and goto state 11
+" CLASS . LexToken(ID,'Zoo',1,6)", Shift and goto state 24
+" CLASS ID . LexToken(EXTENDS,'extends',1,10)", Shift and goto state 31
+" CLASS ID EXTENDS . LexToken(ID,'AnimalKingdom',1,18)", Shift and goto state 44
+" CLASS ID EXTENDS ID . LexToken(IMPLEMENTS,'implements',1,32)", Shift and goto state 69
+" CLASS ID EXTENDS ID IMPLEMENTS . LexToken(ID,'a',1,43)", Shift and goto state 50
+" CLASS ID EXTENDS ID IMPLEMENTS ID . LexToken(COMMA,',',1,44)", Shift and goto state 72
+" CLASS ID EXTENDS ID IMPLEMENTS ID COMMA . LexToken(ID,'b',1,46)", Shift and goto state 50
+" CLASS ID EXTENDS ID IMPLEMENTS ID COMMA ID . LexToken(COMMA,',',1,47)", Shift and goto state 72
+" CLASS ID EXTENDS ID IMPLEMENTS ID COMMA ID COMMA . LexToken(ID,'c',1,49)", Shift and goto state 50
+" CLASS ID EXTENDS ID IMPLEMENTS ID COMMA ID COMMA ID . LexToken(LEFTBRACE,'{',1,51)", Reduce rule [IdList -> ID] with ['c'] and goto state 123
+" CLASS ID EXTENDS ID IMPLEMENTS ID COMMA ID COMMA IdList . LexToken(LEFTBRACE,'{',1,51)"," Reduce rule [IdList -> ID COMMA IdList] with ['b',',',None] and goto state 123"
+" CLASS ID EXTENDS ID IMPLEMENTS ID COMMA IdList . LexToken(LEFTBRACE,'{',1,51)"," Reduce rule [IdList -> ID COMMA IdList] with ['a',',',None] and goto state 122"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList . LexToken(LEFTBRACE,'{',1,51)", Shift and goto state 172
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE . LexToken(BOOLEAN,'boolean',1,54)", Shift and goto state 15
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE BOOLEAN . LexToken(ID,'isGorilla',1,62)", Reduce rule [Type -> BOOLEAN] with ['boolean'] and goto state 8
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type . LexToken(ID,'isGorilla',1,62)", Shift and goto state 19
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID . LexToken(LEFTPAREN,'(',1,71)", Shift and goto state 26
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN . LexToken(ID,'Animal',1,73)", Shift and goto state 36
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN ID . LexToken(ID,'animal',1,80)", Shift and goto state 59
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN ID ID . LexToken(RIGHTPAREN,')',1,86)"," Reduce rule [Variable -> ID ID] with ['Animal','animal'] and goto state 39"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Variable . LexToken(RIGHTPAREN,')',1,86)", Reduce rule [Formals -> Variable] with [None] and goto state 37
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,86)", Shift and goto state 60
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN . LexToken(LEFTBRACE,'{',1,89)", Shift and goto state 62
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE . LexToken(IF,'if',1,93)", Shift and goto state 106
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF . LexToken(LEFTPAREN,'(',1,95)", Shift and goto state 163
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN . LexToken(ID,'animal',1,97)", Shift and goto state 131
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN ID . LexToken(EQUAL,'==',1,104)", Reduce rule [LValue -> ID] with ['animal'] and goto state 95
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN LValue . LexToken(EQUAL,'==',1,104)", Reduce rule [Expression -> LValue] with [None] and goto state 198
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression . LexToken(EQUAL,'==',1,104)", Shift and goto state 148
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression EQUAL . LexToken(ID,'gorilla',1,107)", Reduce rule [CompareOperator -> EQUAL] with ['=='] and goto state 137
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator . LexToken(ID,'gorilla',1,107)", Shift and goto state 131
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator ID . LexToken(RIGHTPAREN,')',1,115)", Reduce rule [LValue -> ID] with ['gorilla'] and goto state 95
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator LValue . LexToken(RIGHTPAREN,')',1,115)", Reduce rule [Expression -> LValue] with [None] and goto state 183
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator Expression . LexToken(RIGHTPAREN,')',1,115)"," Reduce rule [Expression -> Expression CompareOperator Expression] with [None,None,None] and goto state 198"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression . LexToken(RIGHTPAREN,')',1,115)", Shift and goto state 219
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN . LexToken(RETURN,'return',1,117)", Shift and goto state 110
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN . LexToken(BOOLEANCONSTANT,'true',1,124)", Shift and goto state 114
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN BOOLEANCONSTANT . LexToken(SEMICOLON,';',1,128)", Reduce rule [Constant -> BOOLEANCONSTANT] with ['true'] and goto state 96
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Constant . LexToken(SEMICOLON,';',1,128)", Reduce rule [Expression -> Constant] with [None] and goto state 167
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression . LexToken(SEMICOLON,';',1,128)", Shift and goto state 202
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN RETURN Expression SEMICOLON . LexToken(ELSE,'else',1,132)"," Reduce rule [ReturnStatement -> RETURN Expression SEMICOLON] with ['return',None,';'] and goto state 91"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN ReturnStatement . LexToken(ELSE,'else',1,132)", Reduce rule [Statement -> ReturnStatement] with [None] and goto state 233
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement . LexToken(ELSE,'else',1,132)", Shift and goto state 241
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE . LexToken(RETURN,'return',1,137)", Shift and goto state 110
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN . LexToken(BOOLEANCONSTANT,'false',1,144)", Shift and goto state 114
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN BOOLEANCONSTANT . LexToken(SEMICOLON,';',1,149)", Reduce rule [Constant -> BOOLEANCONSTANT] with ['false'] and goto state 96
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN Constant . LexToken(SEMICOLON,';',1,149)", Reduce rule [Expression -> Constant] with [None] and goto state 167
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN Expression . LexToken(SEMICOLON,';',1,149)", Shift and goto state 202
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE RETURN Expression SEMICOLON . LexToken(RIGHTBRACE,'}',1,152)"," Reduce rule [ReturnStatement -> RETURN Expression SEMICOLON] with ['return',None,';'] and goto state 91"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE ReturnStatement . LexToken(RIGHTBRACE,'}',1,152)", Reduce rule [Statement -> ReturnStatement] with [None] and goto state 245
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE Statement . LexToken(RIGHTBRACE,'}',1,152)"," Reduce rule [IfStatement -> IF LEFTPAREN Expression RIGHTPAREN Statement ELSE Statement] with ['if','(',None,')',None,'else',None] and goto state 87"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IfStatement . LexToken(RIGHTBRACE,'}',1,152)", Reduce rule [Statement -> IfStatement] with [None] and goto state 84
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statement . LexToken(RIGHTBRACE,'}',1,152)", Reduce rule [Statements -> Statement] with [None] and goto state 81
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statements . LexToken(RIGHTBRACE,'}',1,152)", Shift and goto state 132
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statements RIGHTBRACE . LexToken(RIGHTBRACE,'}',1,154)"," Reduce rule [StatementBlock -> LEFTBRACE Statements RIGHTBRACE] with ['{',None,'}'] and goto state 79"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN StatementBlock . LexToken(RIGHTBRACE,'}',1,154)"," Reduce rule [FunctionDeclaration -> Type ID LEFTPAREN Formals RIGHTPAREN StatementBlock] with [None,'isGorilla','(',None,')',None] and goto state 49"
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE FunctionDeclaration . LexToken(RIGHTBRACE,'}',1,154)", Reduce rule [Field -> FunctionDeclaration] with [None] and goto state 47
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Field . LexToken(RIGHTBRACE,'}',1,154)", Reduce rule [Fields -> Field] with [None] and goto state 204
+" CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Fields . LexToken(RIGHTBRACE,'}',1,154)", Shift and goto state 224
+ CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Fields RIGHTBRACE . $end," Reduce rule [ClassDeclaration -> CLASS ID EXTENDS ID IMPLEMENTS IdList LEFTBRACE Fields RIGHTBRACE] with ['class','Zoo','extends','AnimalKingdom','implements',None,'{',None,'}'] and goto state 5"
+ ClassDeclaration . $end, Reduce rule [Declaration -> ClassDeclaration] with [None] and goto state 2
+ Declaration . $end, Reduce rule [Program -> Declaration] with [None] and goto state 1
+ Program . $end,

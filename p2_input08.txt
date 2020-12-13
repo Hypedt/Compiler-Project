@@ -1,0 +1,3 @@
+void f(double x, double y) {
+    for ( ; ; ) x = 1;
+}

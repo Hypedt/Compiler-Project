@@ -1,0 +1,18 @@
+Stack,Action
+" . LexToken(INTERFACE,'interface',1,98)", Shift and goto state 12
+" INTERFACE . LexToken(ID,'crab',1,108)", Shift and goto state 25
+" INTERFACE ID . LexToken(LEFTBRACE,'{',1,114)", Shift and goto state 34
+ INTERFACE ID LEFTBRACE . error,
+ INTERFACE . error,
+" . LexToken(ID,'a',1,124)",
+" ID . LexToken(LEFTBRACE,'{',1,126)", Shift and goto state 9
+ . error,
+" . LexToken(INT,'int',1,128)", Shift and goto state 13
+" INT . LexToken(ID,'a',1,132)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Type . LexToken(ID,'a',1,132)", Shift and goto state 19
+" Type ID . LexToken(SEMICOLON,';',1,133)"," Reduce rule [Variable -> Type ID] with [None,'a'] and goto state 7"
+" Variable . LexToken(SEMICOLON,';',1,133)", Shift and goto state 18
+" Variable SEMICOLON . LexToken(RIGHTBRACE,'}',1,135)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 3"
+ VariableDeclaration . error,
+" . LexToken(RIGHTBRACE,'}',1,137)",
+ . $end,

@@ -1,0 +1,46 @@
+Stack,Action
+" . LexToken(CLASS,'class',1,0)", Shift and goto state 11
+" CLASS . LexToken(ID,'A',1,6)", Shift and goto state 24
+" CLASS ID . LexToken(LEFTBRACE,'{',1,8)", Shift and goto state 32
+" CLASS ID LEFTBRACE . LexToken(BOOLEAN,'boolean',1,14)", Shift and goto state 15
+" CLASS ID LEFTBRACE BOOLEAN . LexToken(ID,'b',1,22)", Reduce rule [Type -> BOOLEAN] with ['boolean'] and goto state 8
+" CLASS ID LEFTBRACE Type . LexToken(ID,'b',1,22)", Shift and goto state 19
+" CLASS ID LEFTBRACE Type ID . LexToken(SEMICOLON,';',1,23)"," Reduce rule [Variable -> Type ID] with [None,'b'] and goto state 7"
+" CLASS ID LEFTBRACE Variable . LexToken(SEMICOLON,';',1,23)", Shift and goto state 18
+" CLASS ID LEFTBRACE Variable SEMICOLON . LexToken(ID,'userDefinedClassType',1,29)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" CLASS ID LEFTBRACE VariableDeclaration . LexToken(ID,'userDefinedClassType',1,29)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" CLASS ID LEFTBRACE Field . LexToken(ID,'userDefinedClassType',1,29)", Shift and goto state 9
+" CLASS ID LEFTBRACE Field ID . LexToken(ID,'f',1,50)", Shift and goto state 21
+" CLASS ID LEFTBRACE Field ID ID . LexToken(LEFTPAREN,'(',1,51)", Shift and goto state 28
+" CLASS ID LEFTBRACE Field ID ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,52)", Shift and goto state 41
+" CLASS ID LEFTBRACE Field ID ID LEFTPAREN RIGHTPAREN . LexToken(LEFTBRACE,'{',1,53)", Shift and goto state 62
+" CLASS ID LEFTBRACE Field ID ID LEFTPAREN RIGHTPAREN LEFTBRACE . LexToken(RIGHTBRACE,'}',1,54)", Shift and goto state 82
+" CLASS ID LEFTBRACE Field ID ID LEFTPAREN RIGHTPAREN LEFTBRACE RIGHTBRACE . LexToken(DOUBLE,'double',1,60)"," Reduce rule [StatementBlock -> LEFTBRACE RIGHTBRACE] with ['{','}'] and goto state 65"
+" CLASS ID LEFTBRACE Field ID ID LEFTPAREN RIGHTPAREN StatementBlock . LexToken(DOUBLE,'double',1,60)"," Reduce rule [FunctionDeclaration -> ID ID LEFTPAREN RIGHTPAREN StatementBlock] with [<str @ 0x1983b2a4940>,'f','(',')',None] and goto state 49"
+" CLASS ID LEFTBRACE Field FunctionDeclaration . LexToken(DOUBLE,'double',1,60)", Reduce rule [Field -> FunctionDeclaration] with [None] and goto state 47
+" CLASS ID LEFTBRACE Field Field . LexToken(DOUBLE,'double',1,60)", Shift and goto state 14
+" CLASS ID LEFTBRACE Field Field DOUBLE . LexToken(ID,'d',1,67)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 8
+" CLASS ID LEFTBRACE Field Field Type . LexToken(ID,'d',1,67)", Shift and goto state 19
+" CLASS ID LEFTBRACE Field Field Type ID . LexToken(SEMICOLON,';',1,68)"," Reduce rule [Variable -> Type ID] with [None,'d'] and goto state 7"
+" CLASS ID LEFTBRACE Field Field Variable . LexToken(SEMICOLON,';',1,68)", Shift and goto state 18
+" CLASS ID LEFTBRACE Field Field Variable SEMICOLON . LexToken(STRING,'string',1,74)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" CLASS ID LEFTBRACE Field Field VariableDeclaration . LexToken(STRING,'string',1,74)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" CLASS ID LEFTBRACE Field Field Field . LexToken(STRING,'string',1,74)", Shift and goto state 16
+" CLASS ID LEFTBRACE Field Field Field STRING . LexToken(ID,'g',1,81)", Reduce rule [Type -> STRING] with ['string'] and goto state 8
+" CLASS ID LEFTBRACE Field Field Field Type . LexToken(ID,'g',1,81)", Shift and goto state 19
+" CLASS ID LEFTBRACE Field Field Field Type ID . LexToken(LEFTPAREN,'(',1,82)", Shift and goto state 26
+" CLASS ID LEFTBRACE Field Field Field Type ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,83)", Shift and goto state 38
+" CLASS ID LEFTBRACE Field Field Field Type ID LEFTPAREN RIGHTPAREN . LexToken(LEFTBRACE,'{',1,84)", Shift and goto state 62
+" CLASS ID LEFTBRACE Field Field Field Type ID LEFTPAREN RIGHTPAREN LEFTBRACE . LexToken(RIGHTBRACE,'}',1,85)", Shift and goto state 82
+" CLASS ID LEFTBRACE Field Field Field Type ID LEFTPAREN RIGHTPAREN LEFTBRACE RIGHTBRACE . LexToken(RIGHTBRACE,'}',1,87)"," Reduce rule [StatementBlock -> LEFTBRACE RIGHTBRACE] with ['{','}'] and goto state 61"
+" CLASS ID LEFTBRACE Field Field Field Type ID LEFTPAREN RIGHTPAREN StatementBlock . LexToken(RIGHTBRACE,'}',1,87)"," Reduce rule [FunctionDeclaration -> Type ID LEFTPAREN RIGHTPAREN StatementBlock] with [None,'g','(',')',None] and goto state 49"
+" CLASS ID LEFTBRACE Field Field Field FunctionDeclaration . LexToken(RIGHTBRACE,'}',1,87)", Reduce rule [Field -> FunctionDeclaration] with [None] and goto state 47
+" CLASS ID LEFTBRACE Field Field Field Field . LexToken(RIGHTBRACE,'}',1,87)", Reduce rule [Fields -> Field] with [None] and goto state 71
+" CLASS ID LEFTBRACE Field Field Field Fields . LexToken(RIGHTBRACE,'}',1,87)"," Reduce rule [Fields -> Field Fields] with [None,None] and goto state 71"
+" CLASS ID LEFTBRACE Field Field Fields . LexToken(RIGHTBRACE,'}',1,87)"," Reduce rule [Fields -> Field Fields] with [None,None] and goto state 71"
+" CLASS ID LEFTBRACE Field Fields . LexToken(RIGHTBRACE,'}',1,87)"," Reduce rule [Fields -> Field Fields] with [None,None] and goto state 45"
+" CLASS ID LEFTBRACE Fields . LexToken(RIGHTBRACE,'}',1,87)", Shift and goto state 70
+ CLASS ID LEFTBRACE Fields RIGHTBRACE . $end," Reduce rule [ClassDeclaration -> CLASS ID LEFTBRACE Fields RIGHTBRACE] with ['class','A','{',None,'}'] and goto state 5"
+ ClassDeclaration . $end, Reduce rule [Declaration -> ClassDeclaration] with [None] and goto state 2
+ Declaration . $end, Reduce rule [Program -> Declaration] with [None] and goto state 1
+ Program . $end,

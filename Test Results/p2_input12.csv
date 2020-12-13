@@ -1,0 +1,30 @@
+Stack,Action
+" . LexToken(CLASS,'class',1,0)", Shift and goto state 11
+" CLASS . LexToken(ID,'One',1,6)", Shift and goto state 24
+" CLASS ID . LexToken(LEFTBRACE,'{',1,10)", Shift and goto state 32
+" CLASS ID LEFTBRACE . LexToken(INT,'int',1,16)", Shift and goto state 13
+" CLASS ID LEFTBRACE INT . LexToken(ID,'oneInt',1,20)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" CLASS ID LEFTBRACE Type . LexToken(ID,'oneInt',1,20)", Shift and goto state 19
+" CLASS ID LEFTBRACE Type ID . LexToken(SEMICOLON,';',1,26)"," Reduce rule [Variable -> Type ID] with [None,'oneInt'] and goto state 7"
+" CLASS ID LEFTBRACE Variable . LexToken(SEMICOLON,';',1,26)", Shift and goto state 18
+" CLASS ID LEFTBRACE Variable SEMICOLON . LexToken(DOUBLE,'double',1,32)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 48"
+" CLASS ID LEFTBRACE VariableDeclaration . LexToken(DOUBLE,'double',1,32)", Reduce rule [Field -> VariableDeclaration] with [None] and goto state 47
+" CLASS ID LEFTBRACE Field . LexToken(DOUBLE,'double',1,32)", Shift and goto state 14
+" CLASS ID LEFTBRACE Field DOUBLE . LexToken(ID,'f',1,39)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 8
+" CLASS ID LEFTBRACE Field Type . LexToken(ID,'f',1,39)", Shift and goto state 19
+" CLASS ID LEFTBRACE Field Type ID . LexToken(LEFTPAREN,'(',1,40)", Shift and goto state 26
+" CLASS ID LEFTBRACE Field Type ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,41)", Shift and goto state 38
+" CLASS ID LEFTBRACE Field Type ID LEFTPAREN RIGHTPAREN . LexToken(LEFTBRACE,'{',1,43)", Shift and goto state 62
+" CLASS ID LEFTBRACE Field Type ID LEFTPAREN RIGHTPAREN LEFTBRACE . LexToken(THIS,'this',1,45)", Shift and goto state 97
+ CLASS ID LEFTBRACE Field Type ID LEFTPAREN RIGHTPAREN LEFTBRACE THIS . error,
+ CLASS ID LEFTBRACE Field Type ID LEFTPAREN RIGHTPAREN . error,
+ CLASS ID LEFTBRACE Field Type ID . error,
+ CLASS ID LEFTBRACE Field . error,
+ CLASS ID . error,
+ . error,
+" . LexToken(ID,'oneInt',1,50)", Shift and goto state 9
+ ID . error,
+" . LexToken(INTCONSTANT,'3',1,57)",
+" . LexToken(RIGHTBRACE,'}',1,59)",
+ . $end,
+,

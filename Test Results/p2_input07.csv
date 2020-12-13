@@ -1,0 +1,22 @@
+Stack,Action
+" . LexToken(ID,'a',1,0)", Shift and goto state 9
+" ID . LexToken(LEFTBRACKET,'[',1,1)", Shift and goto state 22
+ ID LEFTBRACKET . error,
+ . error,
+" . LexToken(LEFTBRACKET,'[',1,4)",
+" . LexToken(RIGHTBRACKET,']',1,8)",
+" . LexToken(ID,'b',1,10)",
+" ID . LexToken(RIGHTBRACKET,']',1,11)", Shift and goto state 9
+ . error,
+" . LexToken(ID,'result',1,15)",
+" ID . LexToken(ASSIGN,'=',1,22)", Shift and goto state 9
+ . error,
+" . LexToken(ID,'x',1,24)", Shift and goto state 9
+ ID . error,
+" . LexToken(ID,'y',1,28)",
+" ID . LexToken(PLUS,'+',1,30)", Shift and goto state 9
+ . error,
+" . LexToken(ID,'z',1,32)", Shift and goto state 9
+ ID . error,
+ . $end,
+,

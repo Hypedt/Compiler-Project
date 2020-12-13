@@ -1,0 +1,30 @@
+Stack,Action
+" . LexToken(INT,'int',1,0)", Shift and goto state 13
+" INT . LexToken(ID,'f',1,4)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Type . LexToken(ID,'f',1,4)", Shift and goto state 19
+" Type ID . LexToken(LEFTPAREN,'(',1,5)", Shift and goto state 26
+" Type ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,6)", Shift and goto state 38
+" Type ID LEFTPAREN RIGHTPAREN . LexToken(LEFTBRACE,'{',1,8)", Shift and goto state 62
+ Type ID LEFTPAREN RIGHTPAREN LEFTBRACE . error,
+ Type ID LEFTPAREN . error,
+ Type . error,
+" . LexToken(ID,'A',1,20)",
+" ID . LexToken(LEFTBRACE,'{',1,26)", Shift and goto state 9
+ . error,
+" . LexToken(STRING,'string',1,37)", Shift and goto state 16
+" STRING . LexToken(ID,'lastName',1,44)", Reduce rule [Type -> STRING] with ['string'] and goto state 8
+" Type . LexToken(ID,'lastName',1,44)", Shift and goto state 19
+" Type ID . LexToken(SEMICOLON,';',1,52)"," Reduce rule [Variable -> Type ID] with [None,'lastName'] and goto state 7"
+" Variable . LexToken(SEMICOLON,';',1,52)", Shift and goto state 18
+" Variable SEMICOLON . LexToken(STRING,'string',1,63)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 3"
+" VariableDeclaration . LexToken(STRING,'string',1,63)", Reduce rule [Declaration -> VariableDeclaration] with [None] and goto state 2
+" Declaration . LexToken(STRING,'string',1,63)", Shift and goto state 16
+" Declaration STRING . LexToken(ID,'firstName',1,70)", Reduce rule [Type -> STRING] with ['string'] and goto state 8
+" Declaration Type . LexToken(ID,'firstName',1,70)", Shift and goto state 19
+" Declaration Type ID . LexToken(SEMICOLON,';',1,79)"," Reduce rule [Variable -> Type ID] with [None,'firstName'] and goto state 7"
+" Declaration Variable . LexToken(SEMICOLON,';',1,79)", Shift and goto state 18
+" Declaration Variable SEMICOLON . LexToken(RIGHTBRACE,'}',1,80)"," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 3"
+ Declaration VariableDeclaration . error,
+ . error,
+ . $end,
+,

@@ -1,0 +1,44 @@
+Stack,Action
+" . LexToken(INTERFACE,'interface',1,0)", Shift and goto state 12
+" INTERFACE . LexToken(ID,'crab',1,10)", Shift and goto state 25
+" INTERFACE ID . LexToken(LEFTBRACE,'{',1,16)", Shift and goto state 34
+" INTERFACE ID LEFTBRACE . LexToken(ID,'myClass',1,69)", Shift and goto state 52
+" INTERFACE ID LEFTBRACE ID . LexToken(LEFTBRACKET,'[',1,77)", Shift and goto state 22
+" INTERFACE ID LEFTBRACE ID LEFTBRACKET . LexToken(RIGHTBRACKET,']',1,78)", Shift and goto state 29
+" INTERFACE ID LEFTBRACE ID LEFTBRACKET RIGHTBRACKET . LexToken(ID,'myClassArrayFunction',1,80)"," Reduce rule [Type -> ID LEFTBRACKET RIGHTBRACKET] with ['myClass','[',']'] and goto state 56"
+" INTERFACE ID LEFTBRACE Type . LexToken(ID,'myClassArrayFunction',1,80)", Shift and goto state 77
+" INTERFACE ID LEFTBRACE Type ID . LexToken(LEFTPAREN,'(',1,100)", Shift and goto state 127
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN . LexToken(INT,'int',1,101)", Shift and goto state 13
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN INT . LexToken(ID,'i',1,105)", Reduce rule [Type -> INT] with ['int'] and goto state 35
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Type . LexToken(ID,'i',1,105)", Shift and goto state 58
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Type ID . LexToken(COMMA,',',1,106)"," Reduce rule [Variable -> Type ID] with [None,'i'] and goto state 39"
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable . LexToken(COMMA,',',1,106)", Shift and goto state 63
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable COMMA . LexToken(STRING,'string',1,108)", Shift and goto state 16
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable COMMA STRING . LexToken(ID,'s',1,115)", Reduce rule [Type -> STRING] with ['string'] and goto state 35
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable COMMA Type . LexToken(ID,'s',1,115)", Shift and goto state 58
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable COMMA Type ID . LexToken(RIGHTPAREN,')',1,116)"," Reduce rule [Variable -> Type ID] with [None,'s'] and goto state 39"
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable COMMA Variable . LexToken(RIGHTPAREN,')',1,116)", Reduce rule [Formals -> Variable] with [None] and goto state 117
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Variable COMMA Formals . LexToken(RIGHTPAREN,')',1,116)"," Reduce rule [Formals -> Variable COMMA Formals] with [None,',',None] and goto state 176"
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,116)", Shift and goto state 208
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN . LexToken(SEMICOLON,';',1,117)", Shift and goto state 226
+" INTERFACE ID LEFTBRACE Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON . LexToken(VOID,'void',1,121)"," Reduce rule [Prototype -> Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON] with [None,<str @ 0x234b9721440>,'(',None,')',';'] and goto state 55"
+" INTERFACE ID LEFTBRACE Prototype . LexToken(VOID,'void',1,121)", Shift and goto state 57
+" INTERFACE ID LEFTBRACE Prototype VOID . LexToken(ID,'myVoidFunction',1,126)", Shift and goto state 78
+" INTERFACE ID LEFTBRACE Prototype VOID ID . LexToken(LEFTPAREN,'(',1,140)", Shift and goto state 128
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN . LexToken(ID,'myClass',1,141)", Shift and goto state 36
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN ID . LexToken(LEFTBRACKET,'[',1,149)", Shift and goto state 22
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN ID LEFTBRACKET . LexToken(RIGHTBRACKET,']',1,150)", Shift and goto state 29
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN ID LEFTBRACKET RIGHTBRACKET . LexToken(ID,'myClassArray',1,152)"," Reduce rule [Type -> ID LEFTBRACKET RIGHTBRACKET] with ['myClass','[',']'] and goto state 35"
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN Type . LexToken(ID,'myClassArray',1,152)", Shift and goto state 58
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN Type ID . LexToken(RIGHTPAREN,')',1,164)"," Reduce rule [Variable -> Type ID] with [None,'myClassArray'] and goto state 39"
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN Variable . LexToken(RIGHTPAREN,')',1,164)", Reduce rule [Formals -> Variable] with [None] and goto state 178
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,164)", Shift and goto state 210
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN Formals RIGHTPAREN . LexToken(SEMICOLON,';',1,165)", Shift and goto state 227
+" INTERFACE ID LEFTBRACE Prototype VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON . LexToken(RIGHTBRACE,'}',1,168)"," Reduce rule [Prototype -> VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON] with ['void',<str @ 0x234b9724c70>,'(',None,')',';'] and goto state 55"
+" INTERFACE ID LEFTBRACE Prototype Prototype . LexToken(RIGHTBRACE,'}',1,168)", Reduce rule [Prototypes -> Prototype] with [None] and goto state 76
+" INTERFACE ID LEFTBRACE Prototype Prototypes . LexToken(RIGHTBRACE,'}',1,168)"," Reduce rule [Prototypes -> Prototype Prototypes] with [None,None] and goto state 53"
+" INTERFACE ID LEFTBRACE Prototypes . LexToken(RIGHTBRACE,'}',1,168)", Shift and goto state 75
+ INTERFACE ID LEFTBRACE Prototypes RIGHTBRACE . $end," Reduce rule [InterfaceDeclaration -> INTERFACE ID LEFTBRACE Prototypes RIGHTBRACE] with ['interface','crab','{',None,'}'] and goto state 6"
+ InterfaceDeclaration . $end, Reduce rule [Declaration -> InterfaceDeclaration] with [None] and goto state 2
+ Declaration . $end, Reduce rule [Program -> Declaration] with [None] and goto state 1
+ Program . $end,

@@ -1,0 +1,37 @@
+Stack,Action
+" . LexToken(VOID,'void',1,0)", Shift and goto state 10
+" VOID . LexToken(ID,'f',1,5)", Shift and goto state 23
+" VOID ID . LexToken(LEFTPAREN,'(',1,6)", Shift and goto state 30
+" VOID ID LEFTPAREN . LexToken(DOUBLE,'double',1,7)", Shift and goto state 14
+" VOID ID LEFTPAREN DOUBLE . LexToken(ID,'x',1,14)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 35
+" VOID ID LEFTPAREN Type . LexToken(ID,'x',1,14)", Shift and goto state 58
+" VOID ID LEFTPAREN Type ID . LexToken(COMMA,',',1,15)"," Reduce rule [Variable -> Type ID] with [None,'x'] and goto state 39"
+" VOID ID LEFTPAREN Variable . LexToken(COMMA,',',1,15)", Shift and goto state 63
+" VOID ID LEFTPAREN Variable COMMA . LexToken(DOUBLE,'double',1,17)", Shift and goto state 14
+" VOID ID LEFTPAREN Variable COMMA DOUBLE . LexToken(ID,'y',1,24)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 35
+" VOID ID LEFTPAREN Variable COMMA Type . LexToken(ID,'y',1,24)", Shift and goto state 58
+" VOID ID LEFTPAREN Variable COMMA Type ID . LexToken(RIGHTPAREN,')',1,25)"," Reduce rule [Variable -> Type ID] with [None,'y'] and goto state 39"
+" VOID ID LEFTPAREN Variable COMMA Variable . LexToken(RIGHTPAREN,')',1,25)", Reduce rule [Formals -> Variable] with [None] and goto state 117
+" VOID ID LEFTPAREN Variable COMMA Formals . LexToken(RIGHTPAREN,')',1,25)"," Reduce rule [Formals -> Variable COMMA Formals] with [None,',',None] and goto state 42"
+" VOID ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,25)", Shift and goto state 66
+" VOID ID LEFTPAREN Formals RIGHTPAREN . LexToken(LEFTBRACE,'{',1,27)", Shift and goto state 62
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE . LexToken(ID,'front',1,33)", Shift and goto state 94
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE ID . LexToken(ASSIGN,'=',1,39)", Reduce rule [LValue -> ID] with ['front'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue . LexToken(ASSIGN,'=',1,39)", Shift and goto state 155
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN . LexToken(ID,'in',1,41)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN ID . LexToken(PERIOD,'.',1,43)", Shift and goto state 153
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN ID PERIOD . LexToken(ID,'nextLine',1,44)", Shift and goto state 186
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN ID PERIOD ID . LexToken(LEFTPAREN,'(',1,52)", Shift and goto state 213
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN ID PERIOD ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,53)", Shift and goto state 229
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN ID PERIOD ID LEFTPAREN RIGHTPAREN . LexToken(SEMICOLON,';',1,54)"," Reduce rule [Call -> ID PERIOD ID LEFTPAREN RIGHTPAREN] with ['in','.','nextLine','(',')'] and goto state 98"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN Call . LexToken(SEMICOLON,';',1,54)", Reduce rule [Expression -> Call] with [None] and goto state 191
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,54)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Expression . LexToken(SEMICOLON,';',1,54)", Shift and goto state 135
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Expression SEMICOLON . LexToken(RIGHTBRACE,'}',1,56)"," Reduce rule [Statement -> Expression SEMICOLON] with [None,';'] and goto state 84"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statement . LexToken(RIGHTBRACE,'}',1,56)", Reduce rule [Statements -> Statement] with [None] and goto state 81
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statements . LexToken(RIGHTBRACE,'}',1,56)", Shift and goto state 132
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE Statements RIGHTBRACE . $end," Reduce rule [StatementBlock -> LEFTBRACE Statements RIGHTBRACE] with ['{',None,'}'] and goto state 119"
+ VOID ID LEFTPAREN Formals RIGHTPAREN StatementBlock . $end," Reduce rule [FunctionDeclaration -> VOID ID LEFTPAREN Formals RIGHTPAREN StatementBlock] with ['void','f','(',None,')',None] and goto state 4"
+ FunctionDeclaration . $end, Reduce rule [Declaration -> FunctionDeclaration] with [None] and goto state 2
+ Declaration . $end, Reduce rule [Program -> Declaration] with [None] and goto state 1
+ Program . $end,

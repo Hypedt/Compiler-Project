@@ -1,0 +1,19 @@
+Stack,Action
+" . LexToken(INT,'int',1,0)", Shift and goto state 13
+" INT . LexToken(LEFTBRACKET,'[',1,3)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Type . LexToken(LEFTBRACKET,'[',1,3)", Shift and goto state 20
+" Type LEFTBRACKET . LexToken(RIGHTBRACKET,']',1,4)", Shift and goto state 27
+" Type LEFTBRACKET RIGHTBRACKET . LexToken(LEFTBRACKET,'[',1,5)"," Reduce rule [Type -> Type LEFTBRACKET RIGHTBRACKET] with [None,'[',']'] and goto state 8"
+" Type . LexToken(LEFTBRACKET,'[',1,5)", Shift and goto state 20
+" Type LEFTBRACKET . LexToken(RIGHTBRACKET,']',1,6)", Shift and goto state 27
+" Type LEFTBRACKET RIGHTBRACKET . LexToken(LEFTBRACKET,'[',1,7)"," Reduce rule [Type -> Type LEFTBRACKET RIGHTBRACKET] with [None,'[',']'] and goto state 8"
+" Type . LexToken(LEFTBRACKET,'[',1,7)", Shift and goto state 20
+" Type LEFTBRACKET . LexToken(RIGHTBRACKET,']',1,8)", Shift and goto state 27
+" Type LEFTBRACKET RIGHTBRACKET . LexToken(ID,'super',1,10)"," Reduce rule [Type -> Type LEFTBRACKET RIGHTBRACKET] with [None,'[',']'] and goto state 8"
+" Type . LexToken(ID,'super',1,10)", Shift and goto state 19
+" Type ID . LexToken(SEMICOLON,';',1,15)"," Reduce rule [Variable -> Type ID] with [None,'super'] and goto state 7"
+" Variable . LexToken(SEMICOLON,';',1,15)", Shift and goto state 18
+ Variable SEMICOLON . $end," Reduce rule [VariableDeclaration -> Variable SEMICOLON] with [None,';'] and goto state 3"
+ VariableDeclaration . $end, Reduce rule [Declaration -> VariableDeclaration] with [None] and goto state 2
+ Declaration . $end, Reduce rule [Program -> Declaration] with [None] and goto state 1
+ Program . $end,

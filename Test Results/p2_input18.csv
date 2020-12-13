@@ -1,0 +1,22 @@
+Stack,Action
+" . LexToken(INT,'int',1,0)", Shift and goto state 13
+" INT . LexToken(ID,'badSyntax',1,4)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Type . LexToken(ID,'badSyntax',1,4)", Shift and goto state 19
+" Type ID . LexToken(LEFTPAREN,'(',1,13)", Shift and goto state 26
+" Type ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,14)", Shift and goto state 38
+" Type ID LEFTPAREN RIGHTPAREN . LexToken(LEFTBRACE,'{',1,17)", Shift and goto state 62
+ Type ID LEFTPAREN RIGHTPAREN LEFTBRACE . error,
+ Type ID LEFTPAREN . error,
+ Type . error,
+" . LexToken(ID,'crab',1,30)",
+" ID . LexToken(LEFTBRACE,'{',1,37)", Shift and goto state 9
+ . error,
+" . LexToken(VOID,'void',1,42)", Shift and goto state 10
+" VOID . LexToken(ID,'a',1,47)", Shift and goto state 23
+" VOID ID . LexToken(LEFTPAREN,'(',1,48)", Shift and goto state 30
+" VOID ID LEFTPAREN . LexToken(RIGHTPAREN,')',1,49)", Shift and goto state 43
+ VOID ID LEFTPAREN RIGHTPAREN . error,
+ VOID ID . error,
+ . error,
+" . LexToken(RIGHTBRACE,'}',1,56)",
+ . $end,

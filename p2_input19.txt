@@ -1,0 +1,8 @@
+// Case 19
+// Expected Outcome: error
+// Reason: class declarations cannot be made in interfaces
+
+interface crab 
+{ 
+	class a { int a; }
+}	

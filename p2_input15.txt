@@ -1,0 +1,6 @@
+interface crab 
+{ 
+	// function that returns a myClass array object
+	myClass [] myClassArrayFunction(int i, string s); 
+	void myVoidFunction(myClass [] myClassArray); 
+}

@@ -1,0 +1,8 @@
+Stack,Action
+" . LexToken(INT,'int',1,0)", Shift and goto state 13
+" INT . LexToken(ID,'i',1,4)", Reduce rule [Type -> INT] with ['int'] and goto state 8
+" Type . LexToken(ID,'i',1,4)", Shift and goto state 19
+ Type ID . error,
+ . error,
+" . LexToken(SEMICOLON,';',1,9)",
+ . $end,

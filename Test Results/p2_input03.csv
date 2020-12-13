@@ -1,0 +1,30 @@
+Stack,Action
+" . LexToken(VOID,'void',1,0)", Shift and goto state 10
+" VOID . LexToken(ID,'f',1,5)", Shift and goto state 23
+" VOID ID . LexToken(LEFTPAREN,'(',1,6)", Shift and goto state 30
+" VOID ID LEFTPAREN . LexToken(DOUBLE,'double',1,7)", Shift and goto state 14
+" VOID ID LEFTPAREN DOUBLE . LexToken(ID,'x',1,14)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 35
+" VOID ID LEFTPAREN Type . LexToken(ID,'x',1,14)", Shift and goto state 58
+" VOID ID LEFTPAREN Type ID . LexToken(COMMA,',',1,15)"," Reduce rule [Variable -> Type ID] with [None,'x'] and goto state 39"
+" VOID ID LEFTPAREN Variable . LexToken(COMMA,',',1,15)", Shift and goto state 63
+" VOID ID LEFTPAREN Variable COMMA . LexToken(DOUBLE,'double',1,17)", Shift and goto state 14
+" VOID ID LEFTPAREN Variable COMMA DOUBLE . LexToken(ID,'y',1,24)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 35
+" VOID ID LEFTPAREN Variable COMMA Type . LexToken(ID,'y',1,24)", Shift and goto state 58
+" VOID ID LEFTPAREN Variable COMMA Type ID . LexToken(RIGHTPAREN,')',1,25)"," Reduce rule [Variable -> Type ID] with [None,'y'] and goto state 39"
+" VOID ID LEFTPAREN Variable COMMA Variable . LexToken(RIGHTPAREN,')',1,25)", Reduce rule [Formals -> Variable] with [None] and goto state 117
+" VOID ID LEFTPAREN Variable COMMA Formals . LexToken(RIGHTPAREN,')',1,25)"," Reduce rule [Formals -> Variable COMMA Formals] with [None,',',None] and goto state 42"
+" VOID ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,25)", Shift and goto state 66
+" VOID ID LEFTPAREN Formals RIGHTPAREN . LexToken(LEFTBRACE,'{',1,27)", Shift and goto state 62
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE . LexToken(ID,'result',1,33)", Shift and goto state 94
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE ID . LexToken(ASSIGN,'=',1,40)", Reduce rule [LValue -> ID] with ['result'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue . LexToken(ASSIGN,'=',1,40)", Shift and goto state 155
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN . LexToken(DOUBLECONSTANT,'5.',1,42)", Shift and goto state 112
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue ASSIGN DOUBLECONSTANT . error,
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE LValue . error,
+ VOID ID LEFTPAREN Formals RIGHTPAREN . error,
+ VOID ID LEFTPAREN . error,
+ VOID . error,
+" . LexToken(LEFTPAREN,'(',1,49)",
+" . LexToken(RIGHTPAREN,')',1,51)",
+" . LexToken(RIGHTBRACE,'}',1,54)",
+ . $end,

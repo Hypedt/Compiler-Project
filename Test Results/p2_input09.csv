@@ -1,0 +1,59 @@
+Stack,Action
+" . LexToken(VOID,'void',1,0)", Shift and goto state 10
+" VOID . LexToken(ID,'f',1,5)", Shift and goto state 23
+" VOID ID . LexToken(LEFTPAREN,'(',1,6)", Shift and goto state 30
+" VOID ID LEFTPAREN . LexToken(DOUBLE,'double',1,7)", Shift and goto state 14
+" VOID ID LEFTPAREN DOUBLE . LexToken(ID,'x',1,14)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 35
+" VOID ID LEFTPAREN Type . LexToken(ID,'x',1,14)", Shift and goto state 58
+" VOID ID LEFTPAREN Type ID . LexToken(COMMA,',',1,15)"," Reduce rule [Variable -> Type ID] with [None,'x'] and goto state 39"
+" VOID ID LEFTPAREN Variable . LexToken(COMMA,',',1,15)", Shift and goto state 63
+" VOID ID LEFTPAREN Variable COMMA . LexToken(DOUBLE,'double',1,17)", Shift and goto state 14
+" VOID ID LEFTPAREN Variable COMMA DOUBLE . LexToken(ID,'y',1,24)", Reduce rule [Type -> DOUBLE] with ['double'] and goto state 35
+" VOID ID LEFTPAREN Variable COMMA Type . LexToken(ID,'y',1,24)", Shift and goto state 58
+" VOID ID LEFTPAREN Variable COMMA Type ID . LexToken(RIGHTPAREN,')',1,25)"," Reduce rule [Variable -> Type ID] with [None,'y'] and goto state 39"
+" VOID ID LEFTPAREN Variable COMMA Variable . LexToken(RIGHTPAREN,')',1,25)", Reduce rule [Formals -> Variable] with [None] and goto state 117
+" VOID ID LEFTPAREN Variable COMMA Formals . LexToken(RIGHTPAREN,')',1,25)"," Reduce rule [Formals -> Variable COMMA Formals] with [None,',',None] and goto state 42"
+" VOID ID LEFTPAREN Formals . LexToken(RIGHTPAREN,')',1,25)", Shift and goto state 66
+" VOID ID LEFTPAREN Formals RIGHTPAREN . LexToken(LEFTBRACE,'{',1,27)", Shift and goto state 62
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE . LexToken(IF,'if',1,33)", Shift and goto state 106
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF . LexToken(LEFTPAREN,'(',1,36)", Shift and goto state 163
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN . LexToken(ID,'h',1,37)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN ID . LexToken(GREATER,'>',1,38)", Reduce rule [LValue -> ID] with ['h'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN LValue . LexToken(GREATER,'>',1,38)", Reduce rule [Expression -> LValue] with [None] and goto state 198
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression . LexToken(GREATER,'>',1,38)", Shift and goto state 146
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression GREATER . LexToken(ID,'w',1,39)", Reduce rule [CompareOperator -> GREATER] with ['>'] and goto state 137
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator . LexToken(ID,'w',1,39)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator ID . LexToken(RIGHTPAREN,')',1,40)", Reduce rule [LValue -> ID] with ['w'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator LValue . LexToken(RIGHTPAREN,')',1,40)", Reduce rule [Expression -> LValue] with [None] and goto state 183
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression CompareOperator Expression . LexToken(RIGHTPAREN,')',1,40)"," Reduce rule [Expression -> Expression CompareOperator Expression] with [None,None,None] and goto state 198"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression . LexToken(RIGHTPAREN,')',1,40)", Shift and goto state 219
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN . LexToken(ID,'g',1,42)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN ID . LexToken(ASSIGN,'=',1,43)", Reduce rule [LValue -> ID] with ['g'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN LValue . LexToken(ASSIGN,'=',1,43)", Shift and goto state 155
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN LValue ASSIGN . LexToken(ID,'h',1,44)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN LValue ASSIGN ID . LexToken(SEMICOLON,';',1,45)", Reduce rule [LValue -> ID] with ['h'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN LValue ASSIGN LValue . LexToken(SEMICOLON,';',1,45)", Reduce rule [Expression -> LValue] with [None] and goto state 191
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,45)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Expression . LexToken(SEMICOLON,';',1,45)", Shift and goto state 135
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Expression SEMICOLON . LexToken(ELSE,'else',1,51)"," Reduce rule [Statement -> Expression SEMICOLON] with [None,';'] and goto state 233"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement . LexToken(ELSE,'else',1,51)", Shift and goto state 241
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE . LexToken(ID,'h',1,56)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE ID . LexToken(ASSIGN,'=',1,57)", Reduce rule [LValue -> ID] with ['h'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE LValue . LexToken(ASSIGN,'=',1,57)", Shift and goto state 155
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE LValue ASSIGN . LexToken(ID,'g',1,58)", Shift and goto state 131
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE LValue ASSIGN ID . LexToken(SEMICOLON,';',1,59)", Reduce rule [LValue -> ID] with ['g'] and goto state 95
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE LValue ASSIGN LValue . LexToken(SEMICOLON,';',1,59)", Reduce rule [Expression -> LValue] with [None] and goto state 191
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE LValue ASSIGN Expression . LexToken(SEMICOLON,';',1,59)"," Reduce rule [Expression -> LValue ASSIGN Expression] with [None,'=',None] and goto state 86"
+" VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE Expression . LexToken(SEMICOLON,';',1,59)", Shift and goto state 135
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE Expression SEMICOLON . error,
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN Statement ELSE . error,
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN Expression RIGHTPAREN . error,
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE IF LEFTPAREN . error,
+ VOID ID LEFTPAREN Formals RIGHTPAREN LEFTBRACE . error,
+ VOID ID LEFTPAREN Formals . error,
+ VOID ID . error,
+ . error,
+" . LexToken(ID,'a',1,72)", Shift and goto state 9
+ ID . error,
+" . LexToken(RIGHTBRACE,'}',1,75)",
+ . $end,

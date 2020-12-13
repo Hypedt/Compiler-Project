@@ -1,0 +1,8 @@
+class Zoo extends AnimalKingdom implements a, b, c
+{
+	boolean isGorilla( Animal animal)
+	{
+		if( animal == gorilla ) return true;
+		else return false;
+	}
+}
